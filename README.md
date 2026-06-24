@@ -4,7 +4,7 @@ An end-to-end data analytics project using SQL, Excel, and Tableau to isolate hi
 
 ## 🔗 Project Links
 * [Interactive Tableau Dashboard](https://public.tableau.com/views/TelcoCustomerRetentionAnalysisHigh-RevenueFrictionPoints/TelcoCustomerRetentionAnalysisHigh-RevenueFrictionPoints?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-* [SQL Code Repository] [[churn_analysis_queries.sql](https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/a73e51d74aec584ccfbc1811932a2b5bdab83623/churn_analysis_queries.sql)](https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/64be42a705c7a183ff5cf6ad18527153304fd7cb/churn_analysis_queries.sql)
+* [SQL Code Repository] (https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/64be42a705c7a183ff5cf6ad18527153304fd7cb/churn_analysis_queries.sql)
 
 ## 📌 Project Overview
 This end-to-end project utilizes the industry-standard **IBM Telco Customer Churn dataset from Kaggle**. The raw dataset represents 7,043 unique telecommunications accounts. By ingesting this data into **Google BigQuery**, executing targeted SQL analysis, and normalizing metrics in Excel, I isolated critical billing friction points impacting top-line recurring revenue.
