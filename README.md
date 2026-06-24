@@ -7,7 +7,7 @@ An end-to-end data analytics project using SQL, Excel, and Tableau to isolate hi
 * [SQL Code Repository] [churn_analysis_queries.sql](https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/a73e51d74aec584ccfbc1811932a2b5bdab83623/churn_analysis_queries.sql)
 
 ## 📌 Project Overview
-An end-to-end data analytics project investigating customer attrition data for a telecommunications firm. By extracting metrics via SQL queries and transforming data inside Excel, this analysis isolates critical friction points impacting both customer retention and top-line recurring revenue.
+This end-to-end project utilizes the industry-standard **IBM Telco Customer Churn dataset from Kaggle**. The raw dataset represents 7,043 unique telecommunications accounts. By ingesting this data into **Google BigQuery**, executing targeted SQL analysis, and normalizing metrics in Excel, I isolated critical billing friction points impacting top-line recurring revenue.
 
 ## 📈 Key Discoveries
 * **The Revenue Engine:** Electronic Check is the highest-grossing payment method, bringing in over **$4.94M** in total revenue.
