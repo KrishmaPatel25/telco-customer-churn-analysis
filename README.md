@@ -25,3 +25,6 @@ To combat the massive **53.23% churn rate** identified at the intersection of Fi
 1. **Incentivize Auto-Pay Migration:** Implement a one-time invoice credit (e.g., $5 to $10) for existing Electronic Check users who transition to automatic credit card or bank transfer billing. Over time, reducing manual billing touchpoints mitigates monthly "sticker shock."
 2. **Targeted Billing UX Audits:** Investigate the digital Electronic Check payment pathway for technical friction, clear pricing, transparent breakdowns, or hidden transaction fees that could be triggering frustration at the exact moment of payment.
 3. **Proactive Retention Offers:** Deploy automated, proactive email/SMS discount campaigns or customer satisfaction check-ins exclusively targeting high-value Fiber Optic lines currently utilizing manual payment methods before their billing cycle completes.
+
+## 🧠 My Analytical Process
+I built this project because I wanted to dig past surface-level metrics. Initially, looking at just the billing revenue or just the general internet churn rates didn't show the full picture. By using SQL subqueries to break the data down further, I found that the real issue wasn't the product itself, but a combination of premium pricing mixed with high-friction manual payment methods.
