@@ -1,23 +1,21 @@
-#Ranking Payment Methods by Total Revenue
-SELECT 
-PaymentMethod,
-ROUND(SUM(TotalCharges), 2) AS total_revenue,
-ROUND(AVG(MonthlyCharges), 2) AS avg_monthly_revenue
- FROM `capstone-project-498416.Customer_churn_analysis.telco_churn` 
- GROUP BY PaymentMethod
- ORDER BY total_revenue DESC;
+/*******************************************************************************
+PROJECT: Telco Customer Retention Analysis
+DATA SOURCE: IBM Telco Customer Churn Dataset (Sourced via Kaggle)
+ENVIRONMENT: Google BigQuery (SQL Workspace), Spreadsheets & Tableau Public
+BUSINESS PROBLEM: High-volume customer attrition eroding recurring revenue streams.
+*******************************************************************************/
 
-#Analyzing Churn by "Internet Service" type
- SELECT
- InternetService,
- COUNT(*) AS total_customers,
- COUNTIF(Churn IS true) AS churned_customers,
- ROUND(COUNTIF(Churn IS true)*100/ COUNT(*), 2) AS churn_rate_percentage
- FROM `capstone-project-498416.Customer_churn_analysis.telco_churn`
- GROUP BY InternetService
- ORDER BY churn_rate_percentage DESC;
+-- =============================================================================
+-- SECTION 1: DATA COMPREHENSION & ORIGIN
+-- Where did this data come from?
+-- The dataset contains 7,043 rows representing individual customer accounts.
+-- Each record tracks demographics, subscribed services (Internet, Phone, Security), 
+-- billing payment methods, monthly/total charges, and their final Churn status.
+-- =============================================================================
 
- --Finding null value
+-- Step 1.1: Metadata Profiling & Data Cleaning
+-- Before diving into analysis, I ran a dynamic script to audit our tables 
+-- for null values to ensure structural data integrity.
  SELECT 
  col_name, 
   COUNT(*) AS null_count
@@ -26,18 +24,56 @@ ROUND(AVG(MonthlyCharges), 2) AS avg_monthly_revenue
 GROUP BY col_name
 ORDER BY null_count DESC;
 
---Connecting the Dots: The Hidden Narrative
-/*fibre optic has highest churn rate percentage and electronic checks have highest monthly avg cost of $76.26 which means Fiber 
+-- =============================================================================
+-- SECTION 2: ISOLATING THE REVENUE ENGINE
+-- Business Context: We need to map out where our biggest revenue streams sit.
+-- If a high-revenue segment is churning, it threatens the company's financial core.
+-- =============================================================================
 
-Optic is a premium, high-speed service, which means it costs more money.
-High costs drive up the monthly bill, pushing those customers into that high-average $76+ tier.
-
-Because many of those customers are paying manually via Electronic Check, they face "sticker shock" every single month when they look at their high bill and physically have to process the payment.
-
-This combination of high cost and manual friction is causing them to abandon ship at a massive 41% clip*/
-
-## To check the above theory we will perform a query to check Fiber Optic users who use Electronic Checks churn faster than Fiber Optic users who use automatic credit cards
+-- Ranking Payment Methods by Total Revenue
 SELECT 
+PaymentMethod,
+ROUND(SUM(TotalCharges), 2) AS total_revenue,
+ROUND(AVG(MonthlyCharges), 2) AS avg_monthly_revenue
+ FROM `capstone-project-498416.Customer_churn_analysis.telco_churn` 
+ GROUP BY PaymentMethod
+ ORDER BY total_revenue DESC;
+
+/* Data Insight: 
+   Electronic Check is our massive revenue engine, bringing in over $4.94M. 
+   However, it also holds an incredibly high average monthly bill (~$76). 
+*/
+
+-- =============================================================================
+-- SECTION 3: DETECTING PRODUCT LINE FRICTION
+-- Business Context: Next, I evaluated which specific product types are failing 
+-- to retain customers at a baseline level.
+-- =============================================================================
+
+-- Analyzing Churn by "Internet Service" type
+ SELECT
+ InternetService,
+ COUNT(*) AS total_customers,
+ COUNTIF(Churn = true) AS churned_customers,
+ ROUND(COUNTIF(Churn IS true)*100/ COUNT(*), 2) AS churn_rate_percentage
+ FROM `capstone-project-498416.Customer_churn_analysis.telco_churn`
+ GROUP BY InternetService
+ ORDER BY churn_rate_percentage DESC;
+
+/* Data Insight: 
+   Fiber Optic customers are leaving at a devastating 41.89% rate—
+   more than double the churn rate of regular DSL lines.
+*/
+
+-- =============================================================================
+-- SECTION 4: THE HIDDEN NARRATIVE (Connecting Product & Billing)
+-- Executive Summary: Premium Fiber Optic pricing drives bills into the $76+ tier. 
+-- When combined with the manual monthly touchpoint of an Electronic Check, 
+-- customers experience severe billing friction ("sticker shock") every month.
+-- =============================================================================
+
+-- To check the above theory, we will perform a query to check if Fiber Optic users who use Electronic Checks churn faster than Fiber Optic users who use automatic credit cards
+SELECT
     InternetService,
     PaymentMethod,
     COUNT(*) AS total_customers,
@@ -48,6 +84,10 @@ WHERE InternetService = 'Fiber optic'
 GROUP BY InternetService, PaymentMethod
 ORDER BY churn_rate_percentage DESC;
 
-/*after performing the querry we discovered that Let's look at the incredible contrast you just uncovered:
-The High-Risk Combo: Fiber Optic + Electronic Check = 53.23% Churn
-The Low-Risk Combo: Fiber Optic + Credit Card (automatic) = 25.29% Churn */
+/* The Core Discovery: 
+   After performing the query, we discovered that:
+   Fiber Optic + Electronic Check triggers an astronomical 53.23% Churn Rate.
+   In contrast, moving those same users to automated billing (Credit Card) 
+   slices the churn rate down to 25.29%.
+*/
+
