@@ -18,3 +18,10 @@ An end-to-end data analytics project investigating customer attrition data for a
 * **SQL (Google BigQuery):** Advanced data profiling, null-value metadata filtering, and multi-conditional aggregation logic.
 * **Excel / CSV:** Data cleaning, table division, and structural verification.
 * **Tableau Public:** Advanced dashboard building, color-contrast engineering, and interactive metric delivery.
+
+## 💡 Proposed Business Solutions
+To combat the massive **53.23% churn rate** identified at the intersection of Fiber Optic services and Electronic Check payments, the following interventions are recommended:
+
+1. **Incentivize Auto-Pay Migration:** Implement a one-time invoice credit (e.g., $5 to $10) for existing Electronic Check users who transition to automatic credit card or bank transfer billing. Over time, reducing manual billing touchpoints mitigates monthly "sticker shock."
+2. **Targeted Billing UX Audits:** Investigate the digital Electronic Check payment pathway for technical friction, clear pricing, transparent breakdowns, or hidden transaction fees that could be triggering frustration at the exact moment of payment.
+3. **Proactive Retention Offers:** Deploy automated, proactive email/SMS discount campaigns or customer satisfaction check-ins exclusively targeting high-value Fiber Optic lines currently utilizing manual payment methods before their billing cycle completes.
