@@ -4,7 +4,7 @@ An end-to-end data analytics project using SQL, Excel, and Tableau to isolate hi
 
 ## 🔗 Project Links
 * [Interactive Tableau Dashboard](https://public.tableau.com/views/TelcoCustomerRetentionAnalysisHigh-RevenueFrictionPoints/TelcoCustomerRetentionAnalysisHigh-RevenueFrictionPoints?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-* [SQL Code Repository][churn_analysis_queries.sql](https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/a73e51d74aec584ccfbc1811932a2b5bdab83623/churn_analysis_queries.sql)
+* [SQL Code Repository] [churn_analysis_queries.sql](https://github.com/KrishmaPatel25/telco-customer-churn-analysis/blob/a73e51d74aec584ccfbc1811932a2b5bdab83623/churn_analysis_queries.sql)
 
 ## 📌 Project Overview
 An end-to-end data analytics project investigating customer attrition data for a telecommunications firm. By extracting metrics via SQL queries and transforming data inside Excel, this analysis isolates critical friction points impacting both customer retention and top-line recurring revenue.
